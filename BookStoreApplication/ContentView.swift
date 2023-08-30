@@ -103,18 +103,17 @@ struct ContentView: View {
     }
     
     struct BookDetailView: View {
-        @State private var isFavorite: Bool
-        let book: Book
+        @ObservedObject private var viewModel: BookDetailViewModel
         
         init(book: Book) {
-            self.book = book
-            self._isFavorite = State(initialValue: UserDefaults.standard.bool(forKey: book.title))
+            self.viewModel = BookDetailViewModel(book: book)
+            
         }
         
         var body: some View {
             ScrollView {
                 VStack(alignment: .leading, spacing: 16) {
-                    if let thumbnailURL = book.thumbnailURL {
+                    if let thumbnailURL = viewModel.book.thumbnailURL {
                         AsyncImage(url: thumbnailURL) { image in
                             image
                                 .resizable()
@@ -127,18 +126,18 @@ struct ContentView: View {
                         .frame(height: 200)
                     }
                     
-                    Text(book.title)
+                    Text(viewModel.book.title)
                         .font(.title)
                     
-                    Text("By \(book.authors.joined(separator: ", "))")
+                    Text("By \(viewModel.book.authors.joined(separator: ", "))")
                         .font(.subheadline)
                         .foregroundColor(.gray)
                     
-                    Text(book.description)
+                    Text(viewModel.book.description)
                         .font(.body)
                         .multilineTextAlignment(.leading)
                     
-                    if let buyLinkURL = book.buyLinkURL {
+                    if let buyLinkURL = viewModel.book.buyLinkURL {
                         Button(action: {
                             openURL(buyLinkURL)
                         }) {
@@ -156,24 +155,24 @@ struct ContentView: View {
                 .padding()
             }
             .onAppear{
-                isFavorite = UserDefaults.standard.bool(forKey: book.title)
+                viewModel.isFavorite = UserDefaults.standard.bool(forKey: viewModel.book.title)
             }
             .onDisappear {
-                UserDefaults.standard.set(isFavorite, forKey: book.title)
+                UserDefaults.standard.set(viewModel.isFavorite, forKey: viewModel.book.title)
                 NotificationCenter.default.post(name: Notification.Name("refreshList"), object: nil)
             }
             .navigationTitle("Book Details")
             .navigationBarItems(
                 trailing: Button(action: toggleFavorite) {
-                    Image(systemName: isFavorite ? "heart.fill" : "heart")
-                        .foregroundColor(isFavorite ? Color.red : Color.primary)
+                    Image(systemName: viewModel.isFavorite ? "heart.fill" : "heart")
+                        .foregroundColor(viewModel.isFavorite ? Color.red : Color.primary)
                 }
             )
         }
         
         private func toggleFavorite() {
-            isFavorite.toggle()
-            UserDefaults.standard.set(isFavorite, forKey: book.title)
+            viewModel.isFavorite.toggle()
+            UserDefaults.standard.set(viewModel.isFavorite, forKey: viewModel.book.title)
         }
     }
     
