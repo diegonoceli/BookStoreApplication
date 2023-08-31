@@ -10,18 +10,18 @@ import BookStore
 
 struct ContentView: View {
     
-    @State private var books: [Book] = [] // Populate this with your data source
-    @State private var showFavoritesOnly = false
-    @State private var currentPage = 1
-    @State private var isLoading = false
+    @State public var books: [Book] = [] // Populate this with your data source
+    @State public var showFavoritesOnly = false
+    @State public var currentPage = 1
+    @State public var isLoading = false
     
     var body: some View {
         NavigationView {
             VStack {
                 Toggle(isOn: $showFavoritesOnly) {
-                                    Text("Show Favorites")
-                                }
-                                .padding()
+                    Text("Show Favorites")
+                }
+                .padding()
                 
                 List(filteredBooks, id: \.self) { book in
                     if book == books.last {
@@ -48,7 +48,7 @@ struct ContentView: View {
         }
     }
     
-    private var filteredBooks: [Book] {
+    public var filteredBooks: [Book] {
         if showFavoritesOnly {
             return books.filter { $0.isFavorite }
         } else {
@@ -56,7 +56,7 @@ struct ContentView: View {
         }
     }
     
-    private func loadMoreBooks() {
+    public func loadMoreBooks() {
         guard !isLoading else {
             return
         }
@@ -71,6 +71,7 @@ struct ContentView: View {
                 currentPage += 1
                 isLoading = false
             case .failure(let error):
+                print("Error during fetch book \(error)")
                 isLoading = false
             }
         }
