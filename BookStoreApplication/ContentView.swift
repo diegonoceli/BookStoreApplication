@@ -31,17 +31,6 @@ struct ContentView: View {
                         BookRow(book: book)
                     }
                 }
-                .onReceive(NotificationCenter.default.publisher(for: Notification.Name("refreshList"))) { _ in
-                    BookStore.shared.fetchBooks(query: "iOS", maxResults: 20, startIndex: 0) { result in
-                        switch result {
-                        case .success(let fetchedBooks):
-                            print("Fetched Books: \(fetchedBooks)")
-                            books = fetchedBooks
-                        case .failure(let error):
-                            print("Error during fetch books: \(error)")
-                        }
-                    }
-                }
                 .navigationTitle("Book Store")
             }
             .onAppear {
