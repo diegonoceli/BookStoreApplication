@@ -16,6 +16,7 @@
 		3D25D33A2A9CC4A40083DBC4 /* BookStoreApplicationUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D25D3392A9CC4A40083DBC4 /* BookStoreApplicationUITestsLaunchTests.swift */; };
 		3D25D3482A9CC4C20083DBC4 /* BookStore in Frameworks */ = {isa = PBXBuildFile; productRef = 3D25D3472A9CC4C20083DBC4 /* BookStore */; };
 		3D3535FD2A9F6A5700BCDB8A /* BookDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3535FC2A9F6A5700BCDB8A /* BookDetailView.swift */; };
+		3D68D7562AA0F2F400D4A810 /* LoadMoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D68D7552AA0F2F400D4A810 /* LoadMoreView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		3D25D3392A9CC4A40083DBC4 /* BookStoreApplicationUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookStoreApplicationUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		3D25D34B2A9CD7390083DBC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		3D3535FC2A9F6A5700BCDB8A /* BookDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailView.swift; sourceTree = "<group>"; };
+		3D68D7552AA0F2F400D4A810 /* LoadMoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadMoreView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 				3D25D3202A9CC4A40083DBC4 /* Assets.xcassets */,
 				3D25D3222A9CC4A40083DBC4 /* Preview Content */,
 				3D3535FC2A9F6A5700BCDB8A /* BookDetailView.swift */,
+				3D68D7552AA0F2F400D4A810 /* LoadMoreView.swift */,
 			);
 			path = BookStoreApplication;
 			sourceTree = "<group>";
@@ -273,6 +276,7 @@
 				3D25D31F2A9CC4A40083DBC4 /* ContentView.swift in Sources */,
 				3D25D31D2A9CC4A40083DBC4 /* BookStoreApplicationApp.swift in Sources */,
 				3D3535FD2A9F6A5700BCDB8A /* BookDetailView.swift in Sources */,
+				3D68D7562AA0F2F400D4A810 /* LoadMoreView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
